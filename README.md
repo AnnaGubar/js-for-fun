@@ -12,3 +12,5 @@
 
 - `setInterval(function, 1000(ms));` запуск
 - `clearInterval(function)` стоп
+
+- **_this.parentNode_** - родитель эл-та

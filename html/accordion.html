@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion</title>
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    />
+
+    <style>
+      a {
+        text-decoration: none;
+      }
+      li {
+        list-style: none;
+      }
+      body {
+        font-size: 18px;
+        color: rgb(44, 42, 46);
+        background-color: rgb(31, 30, 31);
+      }
+      body,
+      .jumbotron {
+        padding: 30px;
+      }
+
+      html {
+        overflow-y: scroll;
+      }
+
+      ul {
+        margin-bottom: 0;
+      }
+
+      .accordion {
+        background: rgb(245, 234, 234);
+        border-radius: 5px;
+        padding: 30px;
+      }
+
+      .question {
+        border-top: 1px solid rgb(182, 181, 181);
+        padding: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .question h2 {
+        font-size: 20px;
+        margin: 0;
+        color: #0f4925;
+      }
+
+      .question .glyphicon {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        color: #c45149;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+
+      .answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+
+      .answer p {
+        padding: 20px;
+      }
+
+      .accordion li.open .question .glyphicon {
+        transform: rotate(180deg);
+      }
+
+      .accordion li.open .answer {
+        max-height: max-content;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="accordion">
+        <ul class="list-unstyled">
+          <li>
+            <div class="question">
+              <h2>Will I be rich?</h2>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </div>
+            <div class="answer">
+              <p>
+                Absolutely! Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. Exercitationem dolorum dolore totam quo commodi sapiente
+                in, libero, consectetur similique, labore non provident dolorem
+                quibusdam quos, corporis facere est quod deserunt.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="question">
+              <h2>What's for dinner?</h2>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </div>
+            <div class="answer">
+              <p>
+                Whatever you want! Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Exercitationem dolorum dolore totam quo
+                commodi sapiente in, libero, consectetur similique, labore non
+                provident dolorem quibusdam quos, corporis facere est quod
+                deserunt. Exercitationem dolorum dolore totam quo commodi
+                sapiente in,libero, consectetur similique, labore non provident
+                dolorem quibusdam quos, corporis facere est quod deserunt.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="question">
+              <h2>Is JavaScript awesome?</h2>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </div>
+            <div class="answer">
+              <p>
+                Yes! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Exercitationem dolorum dolore totam quo commodi sapiente in,
+                libero, consectetur similique, labore non provident dolorem
+                quibusdam quos, corporis facere est quod deserunt.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 🔥🔥🔥🔥 start javascript 🔥🔥🔥🔥 -->
+
+    <script>
+      const accordion = document.querySelector(".accordion");
+      const items = accordion.querySelectorAll("li");
+      const questions = accordion.querySelectorAll(".question");
+
+      function toggleAccordion() {
+        thisItem = this.parentNode; // this = question(с массива questions) обращение к li
+
+        // --------- позволяет открывать все заголовки ---------
+
+        // thisItem.classList.toggle("open");
+
+        // --------- позволяет открывать один заголовок ---------
+
+        items.forEach((item) => {
+          if (thisItem === item) {
+            thisItem.classList.toggle("open");
+            return;
+          }
+          item.classList.remove("open");
+        });
+      }
+
+      questions.forEach((question) =>
+        question.addEventListener("click", toggleAccordion)
+      );
+    </script>
+  </body>
+</html>
