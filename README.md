@@ -1,5 +1,7 @@
 # js-for-fun
 
+## https://learn.better.dev/courses/getting-started-with-javascript/
+
 `console.log(`%c${message} 🔅`, "color:grey; font-size:15px");` </br>
 `console.log("💜".repeat(10))` </br>
 `console.log(string.startsWith("this")); //true`
@@ -14,3 +16,8 @@
 - `clearInterval(function)` стоп
 
 - **_this.parentNode_** - родитель эл-та
+
+_window.innerHeight_ - видимая часть окна браузера (только Viewport) </br>
+_window.outerHeight_ - вся высота окна (закладки, Viewport, консоль и т.д.) </br>
+_document.body.clientHeight_ - высота всего скрола </br>
+_window.scrollX_ _window.scrollY_ - точкu остановки скролла на окне </br>
