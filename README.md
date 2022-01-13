@@ -1,7 +1,7 @@
 # js-for-fun
 
-`console.log(`%c${message} 🔅`, "color:grey; font-size:15px");`
-`console.log("💜".repeat(10))`
+`console.log(`%c${message} 🔅`, "color:grey; font-size:15px");` </br>
+`console.log("💜".repeat(10))` </br>
 `console.log(string.startsWith("this")); //true`
 
 `minutes.innerText = `${String(numberOfMinutes).padStart(2, 0)}`;`
