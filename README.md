@@ -21,3 +21,11 @@ _window.innerHeight_ - видимая часть окна браузера (то
 _window.outerHeight_ - вся высота окна (закладки, Viewport, консоль и т.д.) </br>
 _document.body.clientHeight_ - высота всего скрола </br>
 _window.scrollX_ _window.scrollY_ - точки остановки скролла на окне </br>
+
+` ~ save to localStorage
+localStorage.setItem('username', 'chris');
+
+~ get data from localStorage
+localStorage.getItem('username');`
+
+- https://www.opengraph.io/
