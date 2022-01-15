@@ -130,7 +130,8 @@
         border-radius: 3px;
         background-image: url("https://images.pexels.com/photos/2102818/pexels-photo-2102818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
         background-size: cover;
-        width: 80px;
+        background-position: top center;
+        width: 120px;
         height: 60px;
       }
       .bookmark .title {
@@ -194,7 +195,7 @@
       }
 
       input.addEventListener("focusin", showFloater);
-      input.addEventListener("focusout", closeFloater);
+      // input.addEventListener("focusout", closeFloater);
       overlay.addEventListener("click", closeFloater);
 
       // -----------------------------------
@@ -233,50 +234,55 @@
       const apiUrl = "https://opengraph.io/api/1.0/site";
       const appId = "58858c7bcf07b61e64257391";
 
-      fetch("https://opengraph.io/api/1.0/site").then((response) => {});
-
       fillBookmarksList(bookmarks);
 
-      console.table(bookmarks);
+      // console.table(bookmarks);
 
       function createBookmark(e) {
         e.preventDefault();
 
-        const title = bookmarkInput.value;
+        if (!bookmarkInput.value) {
+          alert("We need info!");
+          return;
+        }
 
-        const bookmark = {
-          title: title,
-        };
+        const url = encodeURIComponent(bookmarkInput.value);
 
-        bookmarks.push(bookmark); // ❕ создание массива записей
-        fillBookmarksList(bookmarks); // ❕ рендер разметки записей
-        storeBookmarks(bookmarks); // ❕ сохранение в localStorage
-        bookmarkForm.reset(); // ❕ очистка формы после каждого ввода записи
+        // fetch(`${apiUrl}/${url}?app_id=${appId}`)
+        fetch(apiUrl + "/" + url + "?app_id=" + appId)
+          // fetch(`${apiUrl}/${url}?app_id=${appId}`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            const bookmark = {
+              title: data.hybridGraph.title,
+              image: data.hybridGraph.image,
+              link: data.hybridGraph.url,
+            };
+
+            bookmarks.push(bookmark); // ❕ создание массива записей
+            fillBookmarksList(bookmarks); // ❕ рендер разметки записей
+            storeBookmarks(bookmarks); // ❕ сохранение в localStorage
+            bookmarkForm.reset(); // ❕ очистка формы после каждого ввода записи
+          })
+          .catch((error) => {
+            alert("There was a problem getting info!");
+          });
 
         console.table(bookmarks);
       }
 
       function fillBookmarksList(bookmarks = []) {
-        // --------- императивный код ---------
-
-        // let bookmarksHtml = "";
-        // for (let i = 0; i < bookmarks.length; i += 1) {
-        //   bookmarksHtml += `
-        //   <a href="#" class="bookmark">
-        //     ${bookmarks[i].title}
-        //     </a>
-        //     `;
-        // }
-
-        // --------- декларативный код ---------
-
         bookmarksList.innerHTML = bookmarks
           .map((bookmark, i) => {
-            return `<a href='#' class='bookmark' data-id='${i}'>
-              <div class='img'></div>
-              <div class='title'>${bookmark.title}</div>
-              <span class="glyphicon glyphicon-remove"></span>
-              </a>`;
+            return `
+          <a href="${bookmark.link}" class="bookmark" data-id="${i}">
+            <div class="img" style="background-image:url('${bookmark.image}')"></div>
+            <div class="title">${bookmark.title}</div>
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        `;
           })
           .join("");
 
@@ -301,3 +307,5 @@
     </script>
   </body>
 </html>
+
+<!-- "https://scotch.io/tutorials/build-a-music-player-with-angular-electron-ii-making-the-ui" -->

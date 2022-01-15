@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<title>-FUN-</title>
+<html>
+  <body style="background-color: lightslategray; color: indigo">
+    <h2>What Can JavaScript Do?</h2>
+
+    <p
+      id="demo"
+      style="
+        padding: 15px;
+        font-size: 25px;
+        border: 3px solid #17d817;
+        width: max-content;
+        border-radius: 10px;
+      "
+    >
+      Touch me...
+    </p>
+
+    <!-- <button type="button">Click Me!</button> -->
+
+    <script>
+      const textRef = document.querySelector("#demo");
+      const bodyHeigth = window.innerHeight;
+      document.body.style.height = bodyHeigth + "px";
+
+      function onClick() {
+        this.style.color = "#772244";
+        this.style.border = "1px dotted #fff";
+        this.innerText = "Hello Beautiful!";
+      }
+
+      function mouseOut() {
+        this.innerText = "COME BACK!!!!!!";
+        this.style.border = "1px solid transparent";
+      }
+
+      function clickOnBody() {
+        textRef.innerText = "🎈🎈🎈";
+      }
+
+      textRef.addEventListener("mouseenter", onClick);
+      textRef.addEventListener("mouseout", mouseOut);
+      document.body.addEventListener("click", clickOnBody);
+    </script>
+  </body>
+</html>
