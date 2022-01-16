@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter App</title>
+
+    <style>
+      body {
+        font-size: 20px;
+        background-color: rgb(49, 56, 59);
+        color: rgb(65, 155, 99);
+      }
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -10px;
+        margin-top: -10px;
+      }
+
+      .list > div {
+        flex-basis: calc((100% - 30px) / 3);
+        margin-left: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        background-color: rgb(52, 61, 65);
+        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+          0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      }
+      img {
+        min-width: 80px;
+        max-height: 200px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      h2 {
+        text-align: center;
+        color: rgb(70, 168, 168);
+      }
+      button {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+
+        margin-bottom: 20px;
+      }
+      p {
+        margin: 0;
+        padding: 25px;
+      }
+      input {
+        padding: 5px 10px;
+        display: block;
+        margin: 30px auto;
+        height: 30px;
+        width: 25%;
+        border-radius: 10px;
+      }
+      /* a {
+        text-decoration: none;
+        color: rgb(202, 97, 176);
+      }
+      li {
+        margin-left: 20px;
+        list-style: upper-roman;
+        color: rgb(55, 140, 155);
+      }
+      h2 > a {
+        font-size: 20px;
+        font-weight: normal;
+        color: rgb(149, 104, 187);
+      } */
+    </style>
+  </head>
+
+  <body>
+    <form action="" class="search">
+      <input
+        type="text"
+        class="search__input"
+        name="search"
+        placeholder="Search"
+      />
+    </form>
+    <div class="list"></div>
+
+    <script src="./filterApp.js" type="module"></script>
+  </body>
+</html>
