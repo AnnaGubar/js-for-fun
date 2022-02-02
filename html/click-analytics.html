@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click analytics</title>
+    <style>
+      body {
+        padding: 30px;
+        background-color: rgb(31, 30, 31);
+        color: rgb(43, 59, 38);
+      }
+      button {
+        display: block;
+        margin-bottom: 10px;
+        width: 100px;
+        height: 30px;
+        background-color: rgb(189, 103, 146);
+        color: rgb(79, 47, 167);
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 20px;
+        border-color: lawngreen;
+        transition: all ease-in-out 400ms;
+      }
+      button:hover {
+        background-color: rgb(240, 130, 185);
+        color: rgb(54, 32, 116);
+        font-size: 18px;
+        border-color: rgb(195, 214, 110);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button>click</button>
+      <button>click</button>
+      <button data-analytics>click</button>
+      <button>click</button>
+    </div>
+
+    <!-- 🔥🔥🔥🔥 start javascript 🔥🔥🔥🔥 -->
+
+    <script>
+      const body = document.querySelector("body");
+      const DEFAULT_ANALYTICS_SELECTOR = "data-analytics";
+      const analytics = {
+        clicks: 0,
+      };
+
+      const analyticsHandler = (e) => {
+        const isAnalyticsButton = e.target.hasAttribute("data-analytics");
+        if (!isAnalyticsButton) return;
+
+        analytics.clicks += 1;
+        console.log(`amount of clicks - ${analytics.clicks}`);
+      };
+
+      body.addEventListener("click", analyticsHandler);
+    </script>
+  </body>
+</html>
