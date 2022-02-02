@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatty events</title>
+    <style>
+      * {
+        box-sizing: content-box;
+      }
+      body {
+        padding: 30px;
+        background-color: rgb(31, 30, 31);
+        color: rgb(43, 59, 38);
+      }
+      .container {
+        min-width: 1000px;
+        margin: 0 auto;
+      }
+      .cursor-decorator {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: purple;
+        transition: transform 0.4s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chatty events</h1>
+    </div>
+
+    <!-- 🔥🔥🔥🔥 start javascript 🔥🔥🔥🔥 -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const mouseDecoratorEl = document.createElement("div");
+      const decoratorWidth = 30;
+      const decoratorHeigth = 30;
+      mouseDecoratorEl.classList.add("cursor-decorator");
+
+      const scrollHandler = ({ clientX, clientY, timeStamp }) => {
+        console.log(timeStamp);
+
+        const x = clientX - decoratorWidth / 2;
+        const y = clientY - decoratorWidth / 2;
+        mouseDecoratorEl.style.transform = `translate(${x}px, ${y}px)`;
+      };
+
+      const debouncedScrollHandler = _.throttle(scrollHandler, 100);
+      // const debouncedScrollHandler = _.debounce(scrollHandler, 100);
+
+      window.addEventListener("mousemove", debouncedScrollHandler);
+
+      document.body.append(mouseDecoratorEl);
+    </script>
+  </body>
+</html>
