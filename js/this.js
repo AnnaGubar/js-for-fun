@@ -300,3 +300,117 @@ console.log(enteredPassword("qwerty"));
 console.log(enteredPassword("bf"));
 
 console.log("-------------------------------------------");
+
+const person = {
+  firstName: "bob",
+  showName() {
+    console.log(this.firstName);
+  },
+};
+
+const foo = function (callback) {
+  callback();
+};
+
+foo(person.showName);
+person.showName();
+
+console.log("-------------------------------------------");
+
+{
+  const person = {
+    age: 10,
+    setAge(newAge) {
+      this.age = newAge;
+    },
+    refreshAge(userId) {
+      console.log(1)
+      fetchAgeFromDb(function (newAge) {
+        console.log(3)
+        this.setAge(newAge);
+      });
+    },
+  };
+
+  function fetchAgeFromDb(cb) {
+    console.log(2)
+    // cb(20);
+  }
+
+  person.refreshAge();
+  console.log(person.age);
+}
+
+console.log("-------------------------------------------");
+
+const name = "bob";
+const age = 20;
+const obj = { name, age };
+
+console.log(obj);
+
+console.log("-------------------------------------------");
+{
+const confused = "no";
+const myKey = confused;
+
+const obj = {
+  myKey: false, // myKey
+  [myKey]: false, // no
+};
+
+  console.log(obj);
+}
+
+console.log("-------------------------------------------");
+
+const piece = {
+  x: 0,
+  y: 0,
+  move(x, y) {
+    this.x = x;
+    this.y = y;
+  },
+};
+
+piece.move(10, 10);
+console.log(piece);
+
+console.log("-------------------------------------------");
+
+
+const [first, , third] = "hello sweet world".split(" ");
+console.log(first, third); // hello world
+console.log(third); // world
+console.log([first, , third]); // ['hello', empty, 'world']
+
+console.log("-------------------------------------------");
+{
+
+const {
+  name,
+  age,
+  gender = "m",
+  hairColor: color,
+} = {
+  name: "bob",
+  age: 20,
+  hairColor: "blue",
+};}
+
+console.log(name, age, gender, color);
+
+console.log("-------------------------------------------");
+
+// let b = 20;
+// const x = 5
+
+// if (true) {
+//   // console.log(b);
+//   console.log(b);
+//   let b = 10;
+//   console.log(x)
+//   const x = 555;
+// }
+// console.log(b);
+

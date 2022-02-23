@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<title>-FUN-</title>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/common.css" />
+
+    <title>-FUN-</title>
+  </head>
   <body style="background-color: lightslategray; color: indigo">
     <h2>What Can JavaScript Do?</h2>
 
@@ -9,13 +16,23 @@
       style="
         padding: 15px;
         font-size: 25px;
-        border: 3px solid #17d817;
+        border: 1px solid #17d817;
         width: max-content;
         border-radius: 10px;
+        height: 30px;
       "
     >
       Touch me...
     </p>
+    <form class="fun-form">
+    <input
+      class="fun-input-reverse"
+      type="text"
+      placeholder="Enter something..."
+      name="value"
+    />
+    <button class="fun-btn-reverse" type="submit">Make reverse</button>
+  </form>
 
     <!-- <button type="button">Click Me!</button> -->
 
@@ -43,5 +60,7 @@
       textRef.addEventListener("mouseout", mouseOut);
       document.body.addEventListener("click", clickOnBody);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="../js/fun/input-reverse.js" type="module"></script>
   </body>
 </html>

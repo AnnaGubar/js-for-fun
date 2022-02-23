@@ -18,3 +18,25 @@ a:hover {
   font-size: 22px;
   color: #eb8ee6;
 }
+
+.fun-input-reverse, .fun-btn-reverse{
+  padding: 5px;
+  height: 30px;
+  color: #6b7acf;
+  font-style: italic;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: rgb(229, 212, 230);
+}
+
+.fun-btn-reverse{
+  margin-left: 10px;
+  padding: 5px 10px;
+  height: 40px;
+  transition: all ease 500ms;
+}
+
+.fun-btn-reverse:hover{
+  color: #535b8d;
+  background-color: rgb(224, 182, 224);
+}
