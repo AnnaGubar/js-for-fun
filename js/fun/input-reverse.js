@@ -5,7 +5,7 @@ formRef.addEventListener("submit", reverseInputValueHandler);
 function reverseInputValueHandler(e) {
   e.preventDefault();
 
-  let inputValue = e.currentTarget.value;
+  let inputValue = e.currentTarget.input;
   let reversedInputValue = inputValue.value.split("").reverse().join('');
 
   console.log('entered value:',inputValue.value);

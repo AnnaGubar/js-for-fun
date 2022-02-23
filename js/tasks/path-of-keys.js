@@ -1,34 +1,22 @@
+//*** Оператор опциональной последовательности ?. */
+
 // Please write a function which takes a path(path is an array of keys) and object, then returns value at this path. If value at path doesn't exists, return undefined. example inputs ['a', 'b', 'c', 'd'], { a: { b: { c: { d: '23' } } } } example output '23'
 
-const arr = ["a", "b", "c", "d"];
-let x = arr.length - 1;
-console.log(x)
+const path = ["a", "b", "c", "d"];
+const obj = { a: { b: { c: { d: "23" } } } };
 
-// for (let i = 0; i <= x; i++){
-//   console.log(i)
-// }
-// for (let i = x; i >=0; i--){
-//   console.log(i)
-//   console.log(arr[i])
-// }
+const pathToVal = (path, obj) =>
+  path.reduce((acum, cur) => {
+    console.log(acum);
+    console.log(cur);
 
-// const pathToValueFoo = (path, obj) => {
-//   let key = path.splice(0, 1);
-
-//   if (typeof obj[key] === "object") {
-//     pathToValueFoo(path, obj[key]);
-//   }
-// };
-
-// const pathToVal = (path, obj) =>
-//   obj?.[path[0]]
-//     ? pathToVal(path.slice(1), obj[path[0]])
-//     : !path.length
-//     ? obj
-//       : undefined;
     
+    if (acum) {
+      return acum[cur];
+    }
+    return undefined;
 
-// const pathToVal = (path, obj) =>
-//   path[0] ? pathToVal(path.slice(1), obj?.[path[0]]) : obj;
+    // return acum ? acum?.[cur] : undefined; // аналог
+  }, obj);
 
-// console.log(pathToVal);
+console.log(pathToVal(path, obj)); // 23
